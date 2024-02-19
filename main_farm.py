@@ -6,28 +6,28 @@ import pandas.io.sql as psql
 from pathlib import Path
 
 #Token is at the settings pane of the Kobo toolbox; near the logout menu
-TOKEN = '072d1667b69adf1d7fd85de61f2072d40715f186'
+TOKEN = 'YOUR_KOBOTOOLBOX_API_TOKEN'
 
 #We need the headers as a means to login to Kobo toolbox server from third party tools
 headers = {"Authorization": f'Token {TOKEN}'}
 
 KF_URL = 'kobo.humanitarianresponse.info'
-#Those using non-humanitaria Kobo toolbox server should use the end point https://kc.kobotoolbox.org/api/v1/
+#Users with the non-humanitaria Kobo toolbox server should use the end point https://kc.kobotoolbox.org/api/v1/
 
 #Asset Id retrived from kobo toolbox; click on a form then retrieve the value between forms and summary
-FARMER_ASSET_UID = 'aZZY7pySEe4AuSy4SefDWR'
-FARM_ASSET_UID = 'awiMWPiKDcmRfgT9BVPx8M'
+FARMER_ASSET_UID = 'FORM1_TOOLBOX_ID'
+FARM_ASSET_UID = 'FORM2_TOOLBOX_ID'
 
 #JSON based URLs for the two forms
 FARMER_URL = f'https://{KF_URL}/api/v2/assets/{FARMER_ASSET_UID}/data/?format=json'
 FARM_URL = f'https://{KF_URL}/api/v2/assets/{FARM_ASSET_UID}/data/?format=json'
 
 #postgres database connection
-connection = p.connect(user="postgres",
-                               password="Maun2806;",
-                               host="127.0.0.1",
-                               port="5432",
-                               database="kadgi")
+connection = p.connect(user="postgres_user",
+                               password="postgres_password",
+                               host="postgres_host",
+                               port="postgres_port",
+                               database="postgres_database")
 
 cursor = connection.cursor()
 
